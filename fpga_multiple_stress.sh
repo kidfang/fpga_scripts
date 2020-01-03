@@ -2,7 +2,7 @@
 
 fpga_stress_percent=20
 fpga_d=0b2b
-fpga_tool_path=/root    # Be sure this path have fpga_single_stress.sh
+fpga_tool_path=/root/fpga_scripts    # Be sure this path have fpga_single_stress.sh
 
 ##############################################
 
