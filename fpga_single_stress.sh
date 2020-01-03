@@ -1,7 +1,9 @@
 #!/usr/bin/expect -f
 
 set fpga_pci	 [lindex $argv 0 ]
-set fpga_percent [lindex $argv 1 ]
+set fpga_sram_percent [lindex $argv 1 ]
+set fpga_dsp_percent [lindex $argv 2 ]
+set fpga_fabric_percent [lindex $argv 3 ]
 
 cd /home/source/thermal/Drop_190218
 
@@ -58,17 +60,17 @@ send "1\r"
 expect "Please type index of control  to tweak:"
 send "1\r"
 expect "Please enter percentage of sram to be activated (eg, enter 20 for 20%):"
-send "$fpga_percent\r"
+send "$fpga_sram_percent\r"
 
 expect "Please type index of control  to tweak:"
 send "2\r"
 expect "Please enter percentage of dsp to be activated (eg, enter 20 for 20%):"
-send "$fpga_percent\r"
+send "$fpga_dsp_percent\r"
 
 expect "Please type index of control  to tweak:"
 send "3\r"
 expect "Please enter percentage of fabric to be activated (eg, enter 20 for 20%):"
-send "$fpga_percent\r"
+send "$fpga_fabric_percent\r"
 
 expect "Please type index of control  to tweak:"
 send "99\r"
