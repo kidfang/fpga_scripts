@@ -23,7 +23,7 @@ for (( i=1; i<=$w; i=i+1 ));
 
                 sudo fpgabist -B "$bus_p" $OPAE_PLATFORM_ROOT/hw/samples/dma_afu/bin/dma_afu.gbs | tee $result_p/fpga_diag/Diag_AFU/diag_"$bus_p"_dma_fau_log.txt
 		
-                echo $bus_n | tee -a /root/fpga_dma_fau_check.txt
+                echo $bus_n | tee -a $result_p/fpga_diag/Diag_AFU/fpga_dma_fau_check.txt
                 cat $result_p/Diag_AFU/diag_"$bus_p"_dma_fau_log.txt | grep -i Bandwidth | tee -a $result_p/fpga_diag/Diag_AFU/fpga_dma_fau_check.txt
 
 		### Diagnostics with nlb_mode_3 ###
