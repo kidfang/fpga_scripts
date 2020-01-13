@@ -11,7 +11,7 @@ mkdir $result_p/fpga_diag/Diag_AFU >/dev/null 2>&1
 mkdir $result_p/fpga_diag/Diag_nlb_mode_3 >/dev/null 2>&1
 
 tool_p=/home/d5005
-#tool_p=/home/arria10gx
+#tool_p=/home/a10gx
 
 w=$( lspci | grep -i $fpga_d | wc -l )
 #w=1
