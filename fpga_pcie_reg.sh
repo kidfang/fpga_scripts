@@ -6,6 +6,7 @@ result_path=/root
 mkdir $result_path/fpga_pcie_reg
 
 fpga_d=0b2b
+#fpga_d=09c4
 fpga_n=$( lspci | grep -i $fpga_d | wc -l )
 
 test_item=6 
@@ -18,6 +19,7 @@ test5_times=100
 ### Be sure as follows path is correct ###
 
 cd /home/source/thermal_pcie_Test_4_29_2019/pcie_regression_test_scripts_v1p0
+#cd /home/source/pcie_regression_test_scripts_v1p0
 
 ##########################################
 
