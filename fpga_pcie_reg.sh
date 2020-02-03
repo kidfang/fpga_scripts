@@ -5,11 +5,7 @@
 result_path=/root
 mkdir $result_path/fpga_pcie_reg
 
-fpga_d=0b2b
-#fpga_d=09c4
-fpga_n=$( lspci | grep -i $fpga_d | wc -l )
-
-test_item=6 
+test_item=6
 test1_times=100
 test2_times=100
 test3_times=100
@@ -18,8 +14,29 @@ test5_times=100
 
 ### Be sure as follows path is correct ###
 
-cd /home/source/thermal_pcie_Test_4_29_2019/pcie_regression_test_scripts_v1p0
-#cd /home/source/pcie_regression_test_scripts_v1p0
+#Test Intel FPGA Stratix : /home/source/thermal_pcie_Test_4_29_2019/pcie_regression_test_scripts_v1p0
+#Test intel FPGA Arria   : /home/source/pcie_regression_test_scripts_v1p0
+
+##########################################
+
+fpga_s=$( lspci | grep -i 0b2b | wc -l )
+fpga_a=$( lspci | grep -i 09c4 | wc -l )
+
+
+if [ $fpga_s -gt 0 ]; then
+        cd /home/source/thermal_pcie_Test_4_29_2019/pcie_regression_test_scripts_v1p0
+        fpga_d=0b2b
+        fpga_n=$fpga_s
+
+elif [ $fpga_a -gt 0 ]; then
+        cd /home/source/pcie_regression_test_scripts_v1p0
+        fpga_d=09c4
+        fpga_n=$fpga_a
+
+else
+        echo "No FPGA device, can not test!!"
+        exit
+fi
 
 ##########################################
 
