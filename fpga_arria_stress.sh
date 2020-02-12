@@ -58,7 +58,6 @@ echo -e "Add Intel PAC $1 to BittWorks device completed\n"
 bwconfig --list
 
 echo -e "\nPlease check all the Intel PAC $1 you installed already in the above list"
-#read -n 1 -p "Press Enter to next step or Press Ctrl + C to Stop! ..."
 
 }
 
