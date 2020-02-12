@@ -169,6 +169,24 @@ for (( i=1; i<=$cable_n; i=i+1 ));
         done
 }
 
+BwMonitor ()
+
+{
+
+usb_n=$(bwconfig --list | grep -i USB | wc -l)
+
+for (( i=1; i<=$usb_n; i=i+1 ));
+        do
+                echo -e "\n----------------------------------------------------\n"
+
+                usb_id=$(bwconfig --list | grep -i USB | awk '{print $2}' | sed -n "$i"p)
+                bwmonitor --dev=$usb_id --read=0 --type=sensor
+                bwmonitor --dev=$usb_id --read=11 --type=sensor | grep -i degrees
+                bwmonitor --dev=$usb_id --read=15 --type=sensor | grep -i degrees
+                bwmonitor --dev=$usb_id --read=12 --type=sensor | grep -i degrees
+        done
+}
+
 ###########################################################################
 ###########################################################################
 ###########################################################################
@@ -201,6 +219,9 @@ case ${set_type} in
         "8")
                 Restore_Mask 00000000
                 ;;
+        "9")
+                BwMonitor
+                ;;
         *)
                 echo "
                 (0), Remove all device at BittWorks device list
@@ -212,6 +233,7 @@ case ${set_type} in
                 (6), Mask uncorrectable errors and correctable errors
                 (7), Restore Acceleration Stack Image
                 (8), Unmask uncorrectable errors and correctable errors
+                (9), Use BwMonitor to check FPGA sensor
                 "
                 ;;
 esac
